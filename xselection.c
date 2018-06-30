@@ -6,11 +6,7 @@
 
 #include "xselection.h"
 
-/* command line option table for XrmParseCommand() */
-XrmOptionDescRec opt_tab[14];
-
 /* Options that get set on the command line */
-int sloop = 0;			 /* number of loops */
 char *sdisp = NULL;		 /* X display to connect to */
 Atom sseln = XA_PRIMARY; /* X selection to work with */
 Atom target = XA_STRING;
@@ -21,16 +17,9 @@ static int frmnl = 1; /* remove (single) newline character at the very end if pr
 Display *dpy;			   /* connection to X11 display */
 XrmDatabase opt_db = NULL; /* database for options */
 
-char **fil_names;   /* names of files to read */
-int fil_number = 0; /* number of files to read */
-int fil_current = 0;
-FILE *fil_handle = NULL;
-
 /* variables to hold Xrm database record and type */
 XrmValue rec_val;
 char *rec_typ;
-
-int tempi = 0;
 
 /* Returns the machine-specific number of bytes per data element
  * returned by XGetWindowProperty */
